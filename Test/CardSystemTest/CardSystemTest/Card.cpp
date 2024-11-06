@@ -2,53 +2,116 @@
 
 int main()
 {
+	for (int i = 0; i < 5; i++) // 카드정보 입력
+	{
+
+
+		cout << "CardName : ";
+		cin >> VarCardInfo.CardName;
+
+		cout << "\n" << "CardIndex : ";
+		cin >> VarCardInfo.CardIndex;
+
+		cout << "\n" << "CardType : ";
+		cin >> VarCardInfo.CardType;
+
+		cout << "\n" << "CardCost : ";
+		cin >> VarCardInfo.CardCost;
+
+		cout << "\n" << "CardValue : ";
+		cin >> VarCardInfo.CardValue;
+
+		MakeCard(VarCardInfo, Deck);
+
+		cout << endl;
+		cout << "-------------------------------------------" << endl;
+
+	}
+
+	for (int i = 0; i < Deck.size(); i++)
+	{
+		ShowCardInfo(Deck[i]);
+	}
+
+	ShuffleCardAndIntoDrawPile(Deck, DrawPile);
+	
+
+	for (int i = 0; i < DrawPile.size(); i++)
+	{
+		ShowCardInfo(DrawPile.front());
+		//DrawPile.pop();
+
+		//Todo. PoP을 해주면 DrawPile size가 작아져서 for문이 제대로 돌지 않는다.. 어떻게 해야?
+	}
 
 
 	return 0;
 }
 
-CardInfo MakeCard(string CardName, int CardIndex, int CardType, int Cost, int Value)
+CardInfo MakeCard(CardInfo InCardInfo, vector<CardInfo> &InDeck)
 {
+	InDeck.push_back(InCardInfo);
+
 	return CardInfo();
 }
 
-void ShuffleCard(vector<CardInfo> Deck)
+void ShowCardInfo(CardInfo inCardInfo)
+{
+	cout << endl;
+	cout << "-------------------------------------------" << endl;
+	cout << "CardName : " << inCardInfo.CardName << endl;
+	cout << "CardIndex : " << inCardInfo.CardIndex << endl;
+	cout << "CardType : " << inCardInfo.CardType << endl;
+	cout << "CardCost : " << inCardInfo.CardCost << endl;
+	cout << "CardValue : " << inCardInfo.CardValue << endl;
+}
+
+void ShuffleCardAndIntoDrawPile(vector<CardInfo> &InDeck, queue<CardInfo>& InDrawPile)
+{
+	random_shuffle(InDeck.begin(), InDeck.end());
+	
+	for (int i = 0; i < InDeck.size(); i++)
+	{
+		InDrawPile.push(InDeck[i]);
+	}
+	
+	cout << endl << "Card Shuffled!" << endl<<endl;
+}
+
+void DrawCard(queue<CardInfo> &InDeck, CardInfo)
+{
+
+}
+
+
+void DiscardCard(vector<CardInfo> &DiscardPile, CardInfo)
 {
 }
 
-void DrawCard(queue<CardInfo> Deck, CardInfo)
+void ExceptCard(vector<CardInfo> &ExceptionPile, CardInfo)
 {
 }
 
-
-void DiscardCard(vector<CardInfo> DiscardPile, CardInfo)
+void SortCard(vector<CardInfo> &SortPile)
 {
 }
 
-void ExceptCard(vector<CardInfo> ExceptionPile, CardInfo)
+void ShowDeck(vector<CardInfo> &InDeck)
 {
 }
 
-void SortCard(vector<CardInfo> SortPile)
+void ShowHand(vector<CardInfo> &Hand)
 {
 }
 
-void ShowDeck(vector<CardInfo> Deck)
+void ShowDrawPile(queue<CardInfo> &DrawPile)
 {
 }
 
-void ShowHand(vector<CardInfo> Hand)
+void ShowDiscardPile(vector<CardInfo> &DiscardPile)
 {
 }
 
-void ShowDrawPile(queue<CardInfo> DrawPile)
-{
-}
-
-void ShowDiscardPile(vector<CardInfo> DiscardPile)
-{
-}
-
-void ShowExceptionPile(vector<CardInfo> ExceptionPile)
+void ShowExceptionPile(vector<CardInfo> &ExceptionPile)
 {
 }
