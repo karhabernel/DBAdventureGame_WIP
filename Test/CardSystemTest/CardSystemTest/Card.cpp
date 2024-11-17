@@ -36,12 +36,18 @@ int main()
 	ShuffleCardAndIntoDrawPile(Deck, DrawPile);
 	
 
-	for (int i = 0; i < DrawPile.size(); i++)
+	//for (int i = 0; i < DrawPile.size(); i++)
+	//{
+	//	ShowCardInfo(DrawPile.front());
+	//	//DrawPile.pop();
+
+	//	PoP을 해주면 DrawPile size가 작아져서 for문이 제대로 돌지 않는다.. 어떻게 해야?
+	//}
+
+	while (!DrawPile.empty())
 	{
 		ShowCardInfo(DrawPile.front());
-		//DrawPile.pop();
-
-		//Todo. PoP을 해주면 DrawPile size가 작아져서 for문이 제대로 돌지 않는다.. 어떻게 해야?
+		DrawCard(DrawPile, Hand);
 	}
 
 
@@ -78,17 +84,22 @@ void ShuffleCardAndIntoDrawPile(vector<CardInfo> &InDeck, queue<CardInfo>& InDra
 	cout << endl << "Card Shuffled!" << endl<<endl;
 }
 
-void DrawCard(queue<CardInfo> &InDeck, CardInfo)
+void DrawCard(queue<CardInfo> &InDeck, vector<CardInfo> &InHand)
+{
+	if (InDeck.empty() != true)
+	{
+		InHand.push_back(InDeck.front());
+		InDeck.pop();
+	}
+}
+
+
+void DiscardCard(vector<CardInfo> &DiscardPile, CardInfo& InCard)
 {
 
 }
 
-
-void DiscardCard(vector<CardInfo> &DiscardPile, CardInfo)
-{
-}
-
-void ExceptCard(vector<CardInfo> &ExceptionPile, CardInfo)
+void ExceptCard(vector<CardInfo> &ExceptionPile)
 {
 }
 

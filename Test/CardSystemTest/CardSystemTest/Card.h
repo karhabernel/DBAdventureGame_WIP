@@ -31,9 +31,9 @@ vector<CardInfo> ExceptionPile;
 CardInfo MakeCard(CardInfo InCardInfo, vector<CardInfo> &InDeck);
 void ShowCardInfo(CardInfo inCardInfo);
 void ShuffleCardAndIntoDrawPile(vector<CardInfo> &InDeck, queue<CardInfo>& InDrawPile); // 셔플과 동시에 DrawPile에 넣어줌
-void DrawCard(queue<CardInfo> & InDeck, CardInfo);
-void DiscardCard(vector<CardInfo> &DiscardPile, CardInfo);
-void ExceptCard(vector<CardInfo> &ExceptionPile, CardInfo);
+void DrawCard(queue<CardInfo> &InDeck, vector<CardInfo> &InHand);
+void DiscardCard(vector<CardInfo> &DiscardPile, CardInfo &InCard);
+void ExceptCard(vector<CardInfo> &ExceptionPile);
 void SortCard(vector<CardInfo> &SortPile); // 덱, 버린 카드 더미, 핸드 등을 CardIndex로 정렬할 때 사용
 
 void ShowDeck(vector<CardInfo> &InDeck);
