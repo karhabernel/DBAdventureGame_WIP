@@ -32,15 +32,13 @@ CardInfo MakeCard(CardInfo InCardInfo, vector<CardInfo> &InDeck);
 void ShowCardInfo(CardInfo inCardInfo);
 void ShuffleCardAndIntoDrawPile(vector<CardInfo> &InDeck, queue<CardInfo>& InDrawPile); // 셔플과 동시에 DrawPile에 넣어줌
 void DrawCard(queue<CardInfo> &InDeck, vector<CardInfo> &InHand);
-void DiscardCard(vector<CardInfo> &DiscardPile, CardInfo &InCard);
-void ExceptCard(vector<CardInfo> &ExceptionPile);
+void DiscardCard(vector<CardInfo> &InHand, vector<CardInfo> &DiscardPile, CardInfo &InCard); //카드 버리기(핸드에서)
 void SortCard(vector<CardInfo> &SortPile); // 덱, 버린 카드 더미, 핸드 등을 CardIndex로 정렬할 때 사용
+void SortCard(queue<CardInfo>& SortPile);
 
-void ShowDeck(vector<CardInfo> &InDeck);
-void ShowHand(vector<CardInfo> &Hand);
-void ShowDrawPile(queue<CardInfo> &DrawPile);
-void ShowDiscardPile(vector<CardInfo> &DiscardPile);
-void ShowExceptionPile(vector<CardInfo> &ExceptionPile);
+void ShowPile(vector<CardInfo> &InDeck);
+void ShowPile(queue<CardInfo> &InDeck);
+
 
 string VarCardName;
 int VarCardIndex;

@@ -42,7 +42,10 @@ int main()
 	//	//DrawPile.pop();
 
 	//	PoP을 해주면 DrawPile size가 작아져서 for문이 제대로 돌지 않는다.. 어떻게 해야?
+	//  -> while문으로 처리함
 	//}
+
+	SortCard(DrawPile);
 
 	while (!DrawPile.empty())
 	{
@@ -94,35 +97,46 @@ void DrawCard(queue<CardInfo> &InDeck, vector<CardInfo> &InHand)
 }
 
 
-void DiscardCard(vector<CardInfo> &DiscardPile, CardInfo& InCard)
+void DiscardCard(vector<CardInfo> &InHand, vector<CardInfo> &DiscardPile, CardInfo& InCard)
 {
-
-}
-
-void ExceptCard(vector<CardInfo> &ExceptionPile)
-{
+	for (int i = 0; i < InHand.size(); i++)
+	{
+			//if (find(InHand.begin(), InHand.end(), InCard) != InHand.end())
+		if(InHand[i].CardName == InCard.CardName 
+			&& InHand[i].CardIndex == InCard.CardIndex
+			&& InHand[i].CardType == InCard.CardType
+			&& InHand[i].CardCost == InCard.CardCost
+			&& InHand[i].CardValue == InCard.CardValue
+			)
+			{
+				DiscardPile.push_back(InCard);
+				InHand.erase(InHand.begin() + i);
+				cout << endl << "InCard : " << InCard.CardName << endl << "DiscardCard : " << InHand[i].CardName << endl;
+				break;
+			}
+	}	
 }
 
 void SortCard(vector<CardInfo> &SortPile)
 {
+	vector<CardInfo> TempCardPile;
+	int MaxIndex = 0;
+	
+	// todo.
+	// Index가 낮은 순서대로 정렬하여 Temp로 빼내고, insert로 첫항으로 밀어주기
+
 }
 
-void ShowDeck(vector<CardInfo> &InDeck)
+void SortCard(queue<CardInfo>& SortPile)
+{
+	queue<CardInfo> TempCardPileQueue;
+	int MaxIndex = 0;
+}
+
+void ShowPile(vector<CardInfo> &InDeck)
 {
 }
 
-void ShowHand(vector<CardInfo> &Hand)
-{
-}
-
-void ShowDrawPile(queue<CardInfo> &DrawPile)
-{
-}
-
-void ShowDiscardPile(vector<CardInfo> &DiscardPile)
-{
-}
-
-void ShowExceptionPile(vector<CardInfo> &ExceptionPile)
+void ShowPile(queue<CardInfo>& InDeck)
 {
 }
